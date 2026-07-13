@@ -84,7 +84,6 @@
   .intlist .card{border:0;border-radius:0;margin:0;background:transparent;box-shadow:none}
   .intlist .card + .card{border-top:1px solid var(--line2)}
   .intlist .row + .row{border-top:1px solid var(--line2)}
-  .preq{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .pnote{font-size:12px;color:var(--muted);line-height:1.5;margin-top:10px}
   .intlist .card.open{background:var(--elevated);border:0;border-radius:12px;box-shadow:0 2px 6px rgba(16,24,40,.10),0 16px 36px rgba(16,24,40,.13);margin:10px 8px}
   .intlist .card.open + .card{border-top:0}
@@ -358,11 +357,11 @@
       <div class="intlist" id="prod-granted">
         <div class="card">
           <div class="row hrow" onclick="toggleCard(this)"><div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">apliteni</span></div><div class="meta">repo <b>finance.apli.tech</b></div></div><span class="pill p-grant">Granted</span><span class="chev">›</span></div>
-          <div class="drawer hide"><div class="preq"><span class="gf-l">Request more</span><select class="gf-sel"><option>apliteni/ops</option><option>apliteni/waitlist</option><option>apliteni/analytics</option></select><button class="btn pri sm" onclick="prodReq(this)">Send request</button></div><div class="pnote">Managed by the org. Ask an admin to revoke this grant.</div></div>
+          <div class="drawer hide"><div class="pnote">Managed by the org. Ask an admin to revoke this grant.</div></div>
         </div>
         <div class="card">
           <div class="row hrow" onclick="toggleCard(this)"><div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">apliteni-labs</span></div><div class="meta">repo <b>experiments</b></div></div><span class="pill p-grant">Granted</span><span class="chev">›</span></div>
-          <div class="drawer hide"><div class="preq"><span class="gf-l">Request more</span><select class="gf-sel"><option>apliteni-labs/site</option><option>apliteni-labs/rnd</option></select><button class="btn pri sm" onclick="prodReq(this)">Send request</button></div><div class="pnote">Managed by the org. Ask an admin to revoke this grant.</div></div>
+          <div class="drawer hide"><div class="pnote">Managed by the org. Ask an admin to revoke this grant.</div></div>
         </div>
         <div class="card">
           <div class="row hrow" onclick="toggleCard(this)"><div class="logo ga">GA</div><div class="grow"><div class="nm">Google Ads</div><div class="meta">account <b>771-234-8890</b></div></div><span class="pill p-grant">Granted</span><span class="chev">›</span></div>
@@ -588,7 +587,6 @@
     cmStep(3);
   }
   function cmGrant(){closeConnect();}
-  function prodReq(btn){var pr=btn.closest('.preq');var seg=pr.querySelector('select').value;pr.innerHTML='<span class="pill p-pend">Requested</span><span class="pnote" style="margin:0">'+seg+', awaiting approval</span>';notify('Request sent');}
   function prodReqAccess(btn){var card=btn.closest('.card');var p=card.querySelector('.hrow .pill');if(p){p.className='pill p-pend';p.textContent='Requested';}var dr=btn.closest('.drawer');var pn=dr.querySelector('.pnote');if(pn)pn.textContent='Access requested \u2014 awaiting org approval.';var f=btn.closest('.dfoot');if(f)f.remove();notify('Access requested');}
   function prodRemove(btn){var card=btn.closest('.card');showConfirm('Remove Stripe?','The key stops working immediately and this product loses the integration.','Remove',function(){card.remove();notify('Stripe removed');});}
   function prodReplace(btn){openReplace(btn.closest('.card').querySelector('.hrow'));}
