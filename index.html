@@ -121,6 +121,8 @@
 
   .banner{border:1px dashed var(--amber);background:var(--amber-bg);border-radius:11px;padding:12px 15px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   .banner .t{font-size:12.5px;color:var(--muted)}.banner .t b{color:var(--amber)}
+  .acc{display:flex;align-items:flex-start;gap:8px;background:var(--amber-bg);border:1px solid var(--amber);border-radius:9px;padding:9px 12px;margin-bottom:13px;font-size:12px;line-height:1.45;color:var(--amber)}
+  .acc .ico{flex:none;font-size:13px}.acc b{color:#f6c87a}
   .add{border:1px dashed var(--line);border-radius:12px;padding:12px 15px;display:flex;align-items:center;gap:12px;color:var(--muted);cursor:pointer;background:var(--secondary)}
   .add:hover{border-color:var(--brand);color:var(--ink)}
   .add .plus{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--brand-txt);flex:none}
@@ -274,6 +276,7 @@
           <span class="pill p-grant">Connected</span><span class="chev open">›</span>
         </div>
         <div class="drawer">
+          <div class="acc"><span class="ico">⚠</span><div><b>Full org access.</b> This connection can reach every repository in the apliteni org — GitHub has no per-repo permission. The segments below are enforced by Lessly, not GitHub.</div></div>
           <div class="gtbl">
             <div class="ghd"><span class="hp">Product</span><span>Segment</span></div>
             <div class="grow2"><span class="prod">strategy.apli.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">strategy.apli.tech</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
@@ -295,6 +298,7 @@
       <div class="card">
         <div class="row hrow" onclick="toggleCard(this)"><div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">apliteni-labs</span></div><div class="meta">Second GitHub org, granted to 1 product</div></div><span class="pill p-grant">Connected</span><span class="chev">›</span></div>
         <div class="drawer hide">
+          <div class="acc"><span class="ico">⚠</span><div><b>Full org access.</b> This connection can reach every repository in the apliteni-labs org — GitHub has no per-repo permission. The segment below is enforced by Lessly, not GitHub.</div></div>
           <div class="gtbl">
             <div class="ghd"><span class="hp">Product</span><span>Segment</span></div>
             <div class="grow2"><span class="prod">labs.apli.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">apliteni-labs/site</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
@@ -306,6 +310,7 @@
       <div class="card">
         <div class="row hrow" onclick="toggleCard(this)"><div class="logo cu">CU</div><div class="grow"><div class="nm">ClickUp <span class="org">acme-team</span></div><div class="meta">acme-team workspace, granted to 1 product</div></div><span class="pill p-grant">Connected</span><span class="chev">›</span></div>
         <div class="drawer hide">
+          <div class="acc"><span class="ico">⚠</span><div><b>Full workspace access.</b> This connection can reach every space in the acme-team workspace — ClickUp has no per-space permission. The segment below is enforced by Lessly, not ClickUp.</div></div>
           <div class="gtbl">
             <div class="ghd"><span class="hp">Product</span><span>Segment</span></div>
             <div class="grow2"><span class="prod">strategy.apli.tech</span><span class="sg"><span class="segid"><span class="scope">space</span><span class="bar"></span><span class="val">Strategy</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
@@ -496,8 +501,8 @@
 <script>
   var cm={},cmMode='org',cmReplace=false,cmReplaceRow=null;
   var GUIDE={
-    GitHub:{lead:'Use a <b>fine-grained personal access token</b> on the apliteni org, with access to the repos you plan to grant.',perms:['Contents: Read','Metadata: Read'],cta:'Create a token on GitHub',link:'https://github.com/settings/personal-access-tokens/new'},
-    ClickUp:{lead:'Sign in to ClickUp and pick a <b>workspace</b>. Lessly reads its spaces and tasks; each product is scoped to one space.',perms:['Spaces: Read','Tasks: Read & write']},
+    GitHub:{lead:'Connect the apliteni org once. GitHub grants access to <b>all repositories</b> in the org — there is no per-repo permission, so Lessly scopes each product to the repo it was granted.',perms:['Contents: Read','Metadata: Read'],cta:'Create a token on GitHub',link:'https://github.com/settings/personal-access-tokens/new'},
+    ClickUp:{lead:'Authorize the <b>whole workspace</b> — ClickUp has no per-space permission. Lessly reads its spaces and tasks, and scopes each product to one space.',perms:['Spaces: Read','Tasks: Read & write']},
     'Google Ads':{lead:'Sign in with Google and choose the <b>manager (MCC) or account</b>. Each product is scoped to one account.',perms:['Campaigns: Read','Conversions: Write']},
     'Google Drive':{lead:'Sign in with Google and choose a <b>shared drive</b>. Each product is scoped to a folder you grant.',perms:['Files & folders: Read']},
     Stripe:{lead:'Use a <b>restricted API key</b> — read access is enough for reporting.',perms:['Charges: Read','Balance: Read'],cta:'Create a key in Stripe',link:'https://dashboard.stripe.com/apikeys/create'},
