@@ -403,8 +403,8 @@
       <div class="dbody cm-step" id="cm-1">
         <p class="cm-lead" id="cm-lead">Connect once for the whole organization. You'll authorize the external org, then grant a segment to each product.</p>
         <div class="pgrid">
-          <button class="ptile" onclick="pickProvider('GitHub','GH','gh','repo','org install','org','token')"><span class="logo gh">GH</span><span><span class="pn">GitHub</span><span class="ps">repositories</span></span></button>
-          <button class="ptile" onclick="pickProvider('ClickUp','CU','cu','space','workspace','org','oauth')"><span class="logo cu">CU</span><span><span class="pn">ClickUp</span><span class="ps">spaces</span></span></button>
+          <button class="ptile" onclick="pickProvider('GitHub','GH','gh','repo','org install','org','app')"><span class="logo gh">GH</span><span><span class="pn">GitHub</span><span class="ps">repositories</span></span></button>
+          <button class="ptile" onclick="pickProvider('ClickUp','CU','cu','space','workspace','org','app')"><span class="logo cu">CU</span><span><span class="pn">ClickUp</span><span class="ps">spaces</span></span></button>
           <button class="ptile" onclick="pickProvider('Google Ads','GA','ga','account','MCC','org','oauth')"><span class="logo ga">GA</span><span><span class="pn">Google Ads</span><span class="ps">accounts</span></span></button>
           <button class="ptile" onclick="pickProvider('Google Drive','GD','gd','folder','drive','org','oauth')"><span class="logo gd">GD</span><span><span class="pn">Google Drive</span><span class="ps">folders</span></span></button>
           <button class="ptile ptile-local" onclick="pickProvider('Stripe','St','st','account','account','local','token')"><span class="logo st">St</span><span><span class="pn">Stripe</span><span class="ps">account</span></span></button>
@@ -501,8 +501,8 @@
 <script>
   var cm={},cmMode='org',cmReplace=false,cmReplaceRow=null;
   var GUIDE={
-    GitHub:{lead:'Connect the apliteni org once. GitHub grants access to <b>all repositories</b> in the org — there is no per-repo permission, so Lessly scopes each product to the repo it was granted.',perms:['Contents: Read','Metadata: Read'],cta:'Create a token on GitHub',link:'https://github.com/settings/personal-access-tokens/new'},
-    ClickUp:{lead:'Authorize the <b>whole workspace</b> — ClickUp has no per-space permission. Lessly reads its spaces and tasks, and scopes each product to one space.',perms:['Spaces: Read','Tasks: Read & write']},
+    GitHub:{lead:'Install the <b>Lessly GitHub App</b> on the apliteni org. The App grants access to <b>all repositories</b> in the org — GitHub has no per-repo permission, so Lessly scopes each product to the repo it was granted.',perms:['Contents: Read','Metadata: Read'],cta:'Install the GitHub App',link:'https://github.com/apps/lessly/installations/new'},
+    ClickUp:{lead:'Install the <b>Lessly app</b> on the ClickUp workspace. It authorizes the <b>whole workspace</b> — ClickUp has no per-space permission — so Lessly scopes each product to one space.',perms:['Spaces: Read','Tasks: Read & write']},
     'Google Ads':{lead:'Sign in with Google and choose the <b>manager (MCC) or account</b>. Each product is scoped to one account.',perms:['Campaigns: Read','Conversions: Write']},
     'Google Drive':{lead:'Sign in with Google and choose a <b>shared drive</b>. Each product is scoped to a folder you grant.',perms:['Files & folders: Read']},
     Stripe:{lead:'Use a <b>restricted API key</b> — read access is enough for reporting.',perms:['Charges: Read','Balance: Read'],cta:'Create a key in Stripe',link:'https://dashboard.stripe.com/apikeys/create'},
@@ -534,16 +534,16 @@
     var whose=cmMode==='product'?'this product':'each product';
     if(shared==='org'){
       document.getElementById('cm-authtitle').textContent='Connect '+name;
-      var how=auth==='oauth'?'Authorize it once for the whole org':'Paste an org-level '+name+' token once';
+      var how=auth==='oauth'?'Authorize it once for the whole org':auth==='app'?'Install the Lessly '+name+' App on your org once':'Paste an org-level '+name+' token once';
       var mem=cmMode==='product'?' As a member you\'d send this as a request to an org admin.':'';
       document.getElementById('cm-authdesc').textContent=name+' connects at the org level. '+how+' — '+whose+' then gets a '+scope+' segment.'+mem;
     }else{
       document.getElementById('cm-authtitle').textContent='Add '+name;
       document.getElementById('cm-authdesc').textContent='Paste your '+name+' API key or token — it stays with this product only, no org approval needed.';
     }
-    if(auth==='oauth'){
+    if(auth==='oauth'||auth==='app'){
       oauth.classList.remove('hide');key.classList.add('hide');
-      var b=document.getElementById('cm-authbtn');b.textContent='Continue with '+name;b.disabled=false;
+      var b=document.getElementById('cm-authbtn');b.textContent=(auth==='app'?'Install the Lessly '+name+' App':'Continue with '+name);b.disabled=false;
     }else{
       oauth.classList.add('hide');key.classList.remove('hide');
       var inp=document.getElementById('cm-keyinp');inp.value='';inp.placeholder=shared==='org'?'Paste '+name+' token':'Paste API key / token';
@@ -554,7 +554,7 @@
     cmStep(2);
   }
   function doAuthorize(){
-    var b=document.getElementById('cm-authbtn');b.disabled=true;b.textContent='Authorizing…';
+    var b=document.getElementById('cm-authbtn');b.disabled=true;b.textContent=(cm.auth==='app'?'Installing…':'Authorizing…');
     window.setTimeout(finishConnect,1100);
   }
   function doKey(){
