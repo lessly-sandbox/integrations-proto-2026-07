@@ -147,6 +147,7 @@
   .segid .scope{font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--tert)}
   .segid .bar{width:1px;height:12px;background:var(--line)}
   .segid .val{font-family:var(--sans);font-size:12.5px;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+  .fullseg{font-size:12.5px;color:var(--tert)}
   .rvk{font:inherit;font-size:12px;font-weight:600;border:0;background:transparent;color:var(--faint);border-radius:7px;padding:5px 9px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
   .rvk:hover{color:var(--danger);background:color-mix(in srgb,var(--danger) 11%,transparent)}
   .rvk:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
@@ -269,25 +270,25 @@
 
       <div class="intlist">
 
-      <div class="card open">
+      <div class="card open" data-scope="org">
         <div class="row hrow" onclick="toggleCard(this)">
           <div class="logo gh">GH</div>
           <div class="grow"><div class="nm">GitHub <span class="org">apliteni</span></div><div class="meta">Installed on the apliteni org, granted to 3 products</div></div>
           <span class="pill p-grant">Connected</span><span class="chev open">›</span>
         </div>
         <div class="drawer">
-          <div class="acc"><span class="ico">⚠</span><div><b>Full org access.</b> This connection can reach every repository in the apliteni org — GitHub has no per-repo permission. The segments below are enforced by Lessly, not GitHub.</div></div>
+          <div class="acc"><span class="ico">⚠</span><div><b>Full org access.</b> GitHub has no per-repo permission, so any product granted here can reach <b>every repository</b> in the apliteni org. There is no per-product repo scope — grant it only to products that should see the whole org.</div></div>
           <div class="gtbl">
-            <div class="ghd"><span class="hp">Product</span><span>Segment <span class="lz">· enforced by Lessly</span></span></div>
-            <div class="grow2"><span class="prod">strategy.apli.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">strategy.apli.tech</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
-            <div class="grow2"><span class="prod">finance.apli.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">finance.apli.tech</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
-            <div class="grow2"><span class="prod">overview.lessly.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">lessly-docs</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
+            <div class="ghd"><span class="hp">Product</span><span>Access</span></div>
+            <div class="grow2"><span class="prod">strategy.apli.tech</span><span class="sg"><span class="fullseg">whole org</span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
+            <div class="grow2"><span class="prod">finance.apli.tech</span><span class="sg"><span class="fullseg">whole org</span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
+            <div class="grow2"><span class="prod">overview.lessly.tech</span><span class="sg"><span class="fullseg">whole org</span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
           </div>
           <div class="gsec req-sec" style="margin-top:16px"><span class="lab">Needs your review</span><span class="cnt">1 request</span></div>
           <div class="reqx">
             <div class="body">
               <div class="tw"><span class="dot"></span><span class="tag">Access requested</span></div>
-              <div class="txt"><b>finance.apli.tech</b> is requesting access, scoped by Lessly to <span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">apliteni/ops</span></span></div>
+              <div class="txt"><b>waitlist.apli.tech</b> is requesting access to this connection — it would get the <b>whole apliteni org</b>.</div>
             </div>
             <button class="btn sm" onclick="denyReq(this)">Deny</button><button class="btn pri sm" onclick="approveReq(this)">Approve</button>
           </div>
@@ -295,25 +296,25 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-scope="org">
         <div class="row hrow" onclick="toggleCard(this)"><div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">apliteni-labs</span></div><div class="meta">Second GitHub org, granted to 1 product</div></div><span class="pill p-grant">Connected</span><span class="chev">›</span></div>
         <div class="drawer hide">
-          <div class="acc"><span class="ico">⚠</span><div><b>Full org access.</b> This connection can reach every repository in the apliteni-labs org — GitHub has no per-repo permission. The segment below is enforced by Lessly, not GitHub.</div></div>
+          <div class="acc"><span class="ico">⚠</span><div><b>Full org access.</b> GitHub has no per-repo permission, so any product granted here can reach <b>every repository</b> in the apliteni-labs org. There is no per-product repo scope.</div></div>
           <div class="gtbl">
-            <div class="ghd"><span class="hp">Product</span><span>Segment <span class="lz">· enforced by Lessly</span></span></div>
-            <div class="grow2"><span class="prod">labs.apli.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">apliteni-labs/site</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
+            <div class="ghd"><span class="hp">Product</span><span>Access</span></div>
+            <div class="grow2"><span class="prod">labs.apli.tech</span><span class="sg"><span class="fullseg">whole org</span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
           </div>
           <div class="dfoot"><button class="btn sm" onclick="openGrant(this)">+ Grant to a product</button></div>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-scope="org">
         <div class="row hrow" onclick="toggleCard(this)"><div class="logo cu">CU</div><div class="grow"><div class="nm">ClickUp <span class="org">acme-team</span></div><div class="meta">acme-team workspace, granted to 1 product</div></div><span class="pill p-grant">Connected</span><span class="chev">›</span></div>
         <div class="drawer hide">
-          <div class="acc"><span class="ico">⚠</span><div><b>Full workspace access.</b> This connection can reach every space in the acme-team workspace — ClickUp has no per-space permission. The segment below is enforced by Lessly, not ClickUp.</div></div>
+          <div class="acc"><span class="ico">⚠</span><div><b>Full workspace access.</b> ClickUp has no per-space permission, so any product granted here can reach <b>every space</b> in the acme-team workspace. There is no per-product space scope.</div></div>
           <div class="gtbl">
-            <div class="ghd"><span class="hp">Product</span><span>Segment <span class="lz">· enforced by Lessly</span></span></div>
-            <div class="grow2"><span class="prod">strategy.apli.tech</span><span class="sg"><span class="segid"><span class="scope">space</span><span class="bar"></span><span class="val">Strategy</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
+            <div class="ghd"><span class="hp">Product</span><span>Access</span></div>
+            <div class="grow2"><span class="prod">strategy.apli.tech</span><span class="sg"><span class="fullseg">whole workspace</span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
           </div>
           <div class="dfoot"><button class="btn sm" onclick="openGrant(this)">+ Grant to a product</button></div>
         </div>
@@ -357,12 +358,12 @@
       <div class="lbl">Granted by the organization <span class="hint">managed at the org level</span></div>
       <div class="intlist" id="prod-granted">
         <div class="card">
-          <div class="row hrow" onclick="toggleCard(this)"><div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">apliteni</span></div><div class="meta">repo <b>finance.apli.tech</b></div></div><span class="pill p-grant">Granted</span><span class="chev">›</span></div>
-          <div class="drawer hide"><div class="pnote">Managed by the org. Ask an admin to revoke this grant.</div></div>
+          <div class="row hrow" onclick="toggleCard(this)"><div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">apliteni</span></div><div class="meta">whole apliteni org</div></div><span class="pill p-grant">Granted</span><span class="chev">›</span></div>
+          <div class="drawer hide"><div class="pnote">Full access to the apliteni org — GitHub has no per-repo scope. Managed by the org; ask an admin to revoke.</div></div>
         </div>
         <div class="card">
-          <div class="row hrow" onclick="toggleCard(this)"><div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">apliteni-labs</span></div><div class="meta">repo <b>experiments</b></div></div><span class="pill p-grant">Granted</span><span class="chev">›</span></div>
-          <div class="drawer hide"><div class="pnote">Managed by the org. Ask an admin to revoke this grant.</div></div>
+          <div class="row hrow" onclick="toggleCard(this)"><div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">apliteni-labs</span></div><div class="meta">whole apliteni-labs org</div></div><span class="pill p-grant">Granted</span><span class="chev">›</span></div>
+          <div class="drawer hide"><div class="pnote">Full access to the apliteni-labs org — GitHub has no per-repo scope. Managed by the org; ask an admin to revoke.</div></div>
         </div>
         <div class="card">
           <div class="row hrow" onclick="toggleCard(this)"><div class="logo ga">GA</div><div class="grow"><div class="nm">Google Ads</div><div class="meta">account <b>771-234-8890</b></div></div><span class="pill p-grant">Granted</span><span class="chev">›</span></div>
@@ -374,7 +375,7 @@
       <div class="intlist" id="prod-avail">
         <div class="card">
           <div class="row hrow" onclick="toggleCard(this)"><div class="logo cu">CU</div><div class="grow"><div class="nm">ClickUp <span class="org">acme-team</span></div><div class="meta">connected in the org, not granted here</div></div><span class="pill p-pend">Available</span><span class="chev">›</span></div>
-          <div class="drawer hide"><div class="pnote">This connection exists at the org level. Request a space segment for this product.</div><div class="dfoot"><button class="btn pri sm" onclick="prodReqAccess(this)">Request access</button></div></div>
+          <div class="drawer hide"><div class="pnote">This connection exists at the org level. Request access — this product would get the whole workspace.</div><div class="dfoot"><button class="btn pri sm" onclick="prodReqAccess(this)">Request access</button></div></div>
         </div>
       </div>
 
@@ -591,12 +592,12 @@
   function prodReqAccess(btn){var card=btn.closest('.card');var p=card.querySelector('.hrow .pill');if(p){p.className='pill p-pend';p.textContent='Requested';}var dr=btn.closest('.drawer');var pn=dr.querySelector('.pnote');if(pn)pn.textContent='Access requested \u2014 awaiting org approval.';var f=btn.closest('.dfoot');if(f)f.remove();notify('Access requested');}
   function prodRemove(btn){var card=btn.closest('.card');showConfirm('Remove Stripe?','The key stops working immediately and this product loses the integration.','Remove',function(){card.remove();notify('Stripe removed');});}
   function prodReplace(btn){openReplace(btn.closest('.card').querySelector('.hrow'));}
-  var grCard=null,grScope='repo';
+  var grCard=null,grScope='repo',grFull='whole org';
   var GR_PRODUCTS=['waitlist.apli.tech','blog.apli.tech','status.apli.tech','strategy.apli.tech'];
   var GR_SEGS={repo:['apliteni/ops','apliteni/waitlist','apliteni/blog'],space:['Marketing','Ops','Design'],account:['771-234-8890','882-119-4410'],folder:['/Finance','/Shared/Reports'],page:['Handbook','Roadmap']};
-  function openGrant(btn){grCard=btn.closest('.card');var name=grCard.querySelector('.hrow .nm').textContent.trim();var se=grCard.querySelector('.gtbl .scope');grScope=se?se.textContent.trim():'repo';document.getElementById('gr-title').textContent='Grant '+name;document.getElementById('gr-seglab').textContent='Lessly segment ('+grScope+')';document.getElementById('gr-product').innerHTML=GR_PRODUCTS.map(function(p){return '<option>'+p+'</option>';}).join('');document.getElementById('gr-seg').innerHTML=(GR_SEGS[grScope]||['segment']).map(function(s){return '<option>'+s+'</option>';}).join('');document.getElementById('grant-modal').classList.remove('hide');}
+  function openGrant(btn){grCard=btn.closest('.card');var name=grCard.querySelector('.hrow .nm').textContent.trim();var isOrg=grCard.getAttribute('data-scope')==='org';var segField=document.getElementById('gr-seg').closest('.gr-field');document.getElementById('gr-title').textContent='Grant '+name;document.getElementById('gr-product').innerHTML=GR_PRODUCTS.map(function(p){return '<option>'+p+'</option>';}).join('');if(isOrg){grScope='org';grFull=/ClickUp/.test(name)?'whole workspace':'whole org';segField.classList.add('hide');document.querySelector('#grant-modal .gr-lead').textContent='This product will get '+grFull+' access to the connection. GitHub/ClickUp have no sub-scope. Revocable anytime.';}else{var se=grCard.querySelector('.gtbl .scope');grScope=se?se.textContent.trim():'repo';segField.classList.remove('hide');document.getElementById('gr-seglab').textContent='Lessly segment ('+grScope+')';document.getElementById('gr-seg').innerHTML=(GR_SEGS[grScope]||['segment']).map(function(s){return '<option>'+s+'</option>';}).join('');document.querySelector('#grant-modal .gr-lead').textContent='Give a product a segment of this connection. It can be revoked anytime.';}document.getElementById('grant-modal').classList.remove('hide');}
   function closeGrant(){document.getElementById('grant-modal').classList.add('hide');}
-  function doGrantDrawer(){var prod=document.getElementById('gr-product').value;var seg=document.getElementById('gr-seg').value;addGrantRow(grCard,prod,seg,grScope);closeGrant();notify(prod+' granted a '+grScope+' segment');}
+  function doGrantDrawer(){var prod=document.getElementById('gr-product').value;if(grScope==='org'){addGrantRow(grCard,prod,grFull,'org');closeGrant();notify(prod+' granted '+grFull+' access');return;}var seg=document.getElementById('gr-seg').value;addGrantRow(grCard,prod,seg,grScope);closeGrant();notify(prod+' granted a '+grScope+' segment');}
   function notify(msg){var wrap=document.getElementById('toasts');if(!wrap)return;var t=document.createElement('div');t.className='toast';t.innerHTML='<span class="tk">✓</span>'+msg;wrap.appendChild(t);window.setTimeout(function(){t.style.transition='opacity .3s,transform .3s';t.style.opacity='0';t.style.transform='translateY(6px)';window.setTimeout(function(){t.remove();},320);},2600);}
   var mgRow=null;
   function manageInt(btn){
@@ -652,8 +653,8 @@
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeConnect();});
   function toggleCard(hdr){var card=hdr.closest('.card');var d=card.querySelector('.drawer');if(!d)return;if(d.classList.contains('hide')){var list=card.closest('.main')||document;list.querySelectorAll('.card.open').forEach(function(c){if(c!==card){c.classList.remove('open');var dd=c.querySelector('.drawer');if(dd)dd.classList.add('hide');var cc=c.querySelector('.chev');if(cc)cc.classList.remove('open');}});}var hidden=d.classList.toggle('hide');card.classList.toggle('open',!hidden);var ch=hdr.querySelector('.chev');if(ch)ch.classList.toggle('open',!hidden);}
   function refreshCount(card){var cnt=card.querySelector('.grant-count');if(!cnt)return;var n=card.querySelectorAll('.grow2').length;cnt.textContent=n+' product'+(n===1?'':'s');}
-  function addGrantRow(card,prod,seg,scope){var tbl=card.querySelector('.gtbl');if(!tbl)return;var em=card.querySelector('.gempty');if(em)em.remove();var row=document.createElement('div');row.className='grow2';row.innerHTML='<span class="prod">'+prod+'</span><span class="sg"><span class="segid"><span class="scope">'+scope+'</span><span class="bar"></span><span class="val">'+seg+'</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button>';tbl.appendChild(row);refreshCount(card);}
-  function revokeRow(btn){var card=btn.closest('.card');var r=btn.closest('.grow2');var pe=r&&r.querySelector('.prod');var prod=pe?pe.textContent.trim():'this product';showConfirm('Revoke access for '+prod+'?','This product loses its segment of the connection. You can grant it again later.','Revoke',function(){if(r)r.remove();refreshCount(card);notify(prod+' access revoked');});}
+  function addGrantRow(card,prod,seg,scope){var tbl=card.querySelector('.gtbl');if(!tbl)return;var em=card.querySelector('.gempty');if(em)em.remove();var row=document.createElement('div');row.className='grow2';var mid=scope==='org'?'<span class="sg"><span class="fullseg">'+seg+'</span></span>':'<span class="sg"><span class="segid"><span class="scope">'+scope+'</span><span class="bar"></span><span class="val">'+seg+'</span></span></span>';row.innerHTML='<span class="prod">'+prod+'</span>'+mid+'<button class="rvk" onclick="revokeRow(this)">✕ Revoke</button>';tbl.appendChild(row);refreshCount(card);}
+  function revokeRow(btn){var card=btn.closest('.card');var r=btn.closest('.grow2');var pe=r&&r.querySelector('.prod');var prod=pe?pe.textContent.trim():'this product';showConfirm('Revoke access for '+prod+'?','This product loses access to the connection. You can grant it again later.','Revoke',function(){if(r)r.remove();refreshCount(card);notify(prod+' access revoked');});}
   function toggleGrant(btn){var d=btn.closest('.drawer');var f=d.querySelector('.grantform');if(f)f.classList.toggle('hide');}
   function doGrant(btn){var f=btn.closest('.grantform');var card=btn.closest('.card');var prod=f.querySelector('.gf-product').value;var seg=f.querySelector('.gf-seg').value;var scope=f.getAttribute('data-scope')||'repo';addGrantRow(card,prod,seg,scope);f.classList.add('hide');}
   function dismissReq(btn){var card=btn.closest('.card');var req=btn.closest('.reqx');if(req)req.remove();var s=card.querySelector('.req-sec');if(s)s.remove();}
