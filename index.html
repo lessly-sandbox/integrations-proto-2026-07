@@ -287,7 +287,7 @@
           <div class="reqx">
             <div class="body">
               <div class="tw"><span class="dot"></span><span class="tag">Access requested</span></div>
-              <div class="txt"><b>finance.apli.tech</b> is requesting <span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">apliteni/ops</span></span></div>
+              <div class="txt"><b>finance.apli.tech</b> is requesting access, scoped by Lessly to <span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">apliteni/ops</span></span></div>
             </div>
             <button class="btn sm" onclick="denyReq(this)">Deny</button><button class="btn pri sm" onclick="approveReq(this)">Approve</button>
           </div>
@@ -594,25 +594,10 @@
   var grCard=null,grScope='repo';
   var GR_PRODUCTS=['waitlist.apli.tech','blog.apli.tech','status.apli.tech','strategy.apli.tech'];
   var GR_SEGS={repo:['apliteni/ops','apliteni/waitlist','apliteni/blog'],space:['Marketing','Ops','Design'],account:['771-234-8890','882-119-4410'],folder:['/Finance','/Shared/Reports'],page:['Handbook','Roadmap']};
-  function openGrant(btn){grCard=btn.closest('.card');var name=grCard.querySelector('.hrow .nm').textContent.trim();var se=grCard.querySelector('.gtbl .scope');grScope=se?se.textContent.trim():'repo';document.getElementById('gr-title').textContent='Grant '+name;document.getElementById('gr-seglab').textContent=grScope;document.getElementById('gr-product').innerHTML=GR_PRODUCTS.map(function(p){return '<option>'+p+'</option>';}).join('');document.getElementById('gr-seg').innerHTML=(GR_SEGS[grScope]||['segment']).map(function(s){return '<option>'+s+'</option>';}).join('');document.getElementById('grant-modal').classList.remove('hide');}
+  function openGrant(btn){grCard=btn.closest('.card');var name=grCard.querySelector('.hrow .nm').textContent.trim();var se=grCard.querySelector('.gtbl .scope');grScope=se?se.textContent.trim():'repo';document.getElementById('gr-title').textContent='Grant '+name;document.getElementById('gr-seglab').textContent='Lessly segment ('+grScope+')';document.getElementById('gr-product').innerHTML=GR_PRODUCTS.map(function(p){return '<option>'+p+'</option>';}).join('');document.getElementById('gr-seg').innerHTML=(GR_SEGS[grScope]||['segment']).map(function(s){return '<option>'+s+'</option>';}).join('');document.getElementById('grant-modal').classList.remove('hide');}
   function closeGrant(){document.getElementById('grant-modal').classList.add('hide');}
   function doGrantDrawer(){var prod=document.getElementById('gr-product').value;var seg=document.getElementById('gr-seg').value;addGrantRow(grCard,prod,seg,grScope);closeGrant();notify(prod+' granted a '+grScope+' segment');}
   function notify(msg){var wrap=document.getElementById('toasts');if(!wrap)return;var t=document.createElement('div');t.className='toast';t.innerHTML='<span class="tk">✓</span>'+msg;wrap.appendChild(t);window.setTimeout(function(){t.style.transition='opacity .3s,transform .3s';t.style.opacity='0';t.style.transform='translateY(6px)';window.setTimeout(function(){t.remove();},320);},2600);}
-  function reqMore(btn,org){
-    var row=btn.closest('.row');var nx=row.nextElementSibling;
-    if(nx&&nx.classList.contains('reqform')){nx.remove();return;}
-    var repos=org==='apliteni'?['apliteni/ops','apliteni/waitlist','apliteni/analytics']:['apliteni-labs/site','apliteni-labs/rnd'];
-    var opts=repos.map(function(r){return '<option>'+r+'</option>';}).join('');
-    var f=document.createElement('div');f.className='reqform';
-    f.innerHTML='<span class="gf-l">Request repo</span><select class="gf-sel rf-seg">'+opts+'</select><button class="btn pri sm" onclick="sendReq(this,\''+org+'\',\'repo\')">Send request</button><button class="btn sm" onclick="this.closest(\'.reqform\').remove()">Cancel</button>';
-    row.after(f);
-  }
-  function sendReq(btn,org,scope){
-    var f=btn.closest('.reqform');var seg=f.querySelector('.rf-seg').value;
-    var p=document.createElement('div');p.className='row';
-    p.innerHTML='<div class="logo gh">GH</div><div class="grow"><div class="nm">GitHub <span class="org">'+org+'</span></div><div class="meta">'+scope+' <b>'+seg+'</b>, awaiting approval</div></div><span class="pill p-pend">Requested</span>';
-    f.replaceWith(p);notify('Request sent');
-  }
   var mgRow=null;
   function manageInt(btn){
     mgRow=btn.closest('.row');
