@@ -121,7 +121,7 @@
   .banner{border:1px dashed var(--amber);background:var(--amber-bg);border-radius:11px;padding:12px 15px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   .banner .t{font-size:12.5px;color:var(--muted)}.banner .t b{color:var(--amber)}
   .acc{display:flex;align-items:flex-start;gap:8px;background:var(--amber-bg);border:1px solid var(--amber);border-radius:9px;padding:9px 12px;margin-bottom:13px;font-size:12px;line-height:1.45;color:var(--amber)}
-  .acc .ico{flex:none;font-size:13px}.acc b{color:#f6c87a}
+  .acc .ico{flex:none;font-size:13px}.acc b{color:var(--amber)}
   .add{border:1px dashed var(--line);border-radius:12px;padding:12px 15px;display:flex;align-items:center;gap:12px;color:var(--muted);cursor:pointer;background:var(--secondary)}
   .add:hover{border-color:var(--brand);color:var(--ink)}
   .add .plus{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--brand-txt);flex:none}
@@ -136,6 +136,7 @@
   .ghd{display:flex;align-items:center;gap:24px;padding:0 12px 10px;margin:0 -12px 2px;border-bottom:1px solid var(--line2)}
   .ghd span{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
   .ghd .hp{width:210px;flex:none}
+  .ghd .lz{color:var(--brand-txt)}
   .grow2{display:flex;align-items:center;gap:24px;padding:11px 12px;margin:0 -12px;border-radius:9px}
   .grow2:hover{background:color-mix(in srgb,var(--ink) 5%,transparent)}
   .grow2 .prod{width:210px;flex:none;font-weight:600;font-size:13px;display:flex;align-items:center;gap:9px;min-width:0}
@@ -277,7 +278,7 @@
         <div class="drawer">
           <div class="acc"><span class="ico">⚠</span><div><b>Full org access.</b> This connection can reach every repository in the apliteni org — GitHub has no per-repo permission. The segments below are enforced by Lessly, not GitHub.</div></div>
           <div class="gtbl">
-            <div class="ghd"><span class="hp">Product</span><span>Segment</span></div>
+            <div class="ghd"><span class="hp">Product</span><span>Segment <span class="lz">· enforced by Lessly</span></span></div>
             <div class="grow2"><span class="prod">strategy.apli.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">strategy.apli.tech</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
             <div class="grow2"><span class="prod">finance.apli.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">finance.apli.tech</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
             <div class="grow2"><span class="prod">overview.lessly.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">lessly-docs</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
@@ -299,7 +300,7 @@
         <div class="drawer hide">
           <div class="acc"><span class="ico">⚠</span><div><b>Full org access.</b> This connection can reach every repository in the apliteni-labs org — GitHub has no per-repo permission. The segment below is enforced by Lessly, not GitHub.</div></div>
           <div class="gtbl">
-            <div class="ghd"><span class="hp">Product</span><span>Segment</span></div>
+            <div class="ghd"><span class="hp">Product</span><span>Segment <span class="lz">· enforced by Lessly</span></span></div>
             <div class="grow2"><span class="prod">labs.apli.tech</span><span class="sg"><span class="segid"><span class="scope">repo</span><span class="bar"></span><span class="val">apliteni-labs/site</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
           </div>
           <div class="dfoot"><button class="btn sm" onclick="openGrant(this)">+ Grant to a product</button></div>
@@ -311,7 +312,7 @@
         <div class="drawer hide">
           <div class="acc"><span class="ico">⚠</span><div><b>Full workspace access.</b> This connection can reach every space in the acme-team workspace — ClickUp has no per-space permission. The segment below is enforced by Lessly, not ClickUp.</div></div>
           <div class="gtbl">
-            <div class="ghd"><span class="hp">Product</span><span>Segment</span></div>
+            <div class="ghd"><span class="hp">Product</span><span>Segment <span class="lz">· enforced by Lessly</span></span></div>
             <div class="grow2"><span class="prod">strategy.apli.tech</span><span class="sg"><span class="segid"><span class="scope">space</span><span class="bar"></span><span class="val">Strategy</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
           </div>
           <div class="dfoot"><button class="btn sm" onclick="openGrant(this)">+ Grant to a product</button></div>
@@ -322,7 +323,7 @@
         <div class="row hrow" onclick="toggleCard(this)"><div class="logo ga">GA</div><div class="grow"><div class="nm">Google Ads <span class="org">MCC-882</span></div><div class="meta">MCC with 12 accounts, granted to 1 product</div></div><span class="pill p-grant">Connected</span><span class="chev">›</span></div>
         <div class="drawer hide">
           <div class="gtbl">
-            <div class="ghd"><span class="hp">Product</span><span>Segment</span></div>
+            <div class="ghd"><span class="hp">Product</span><span>Segment <span class="lz">· enforced by Lessly</span></span></div>
             <div class="grow2"><span class="prod">finance.apli.tech</span><span class="sg"><span class="segid"><span class="scope">account</span><span class="bar"></span><span class="val">771-234-8890</span></span></span><button class="rvk" onclick="revokeRow(this)">✕ Revoke</button></div>
           </div>
           <div class="dfoot"><button class="btn sm" onclick="openGrant(this)">+ Grant to a product</button></div>
@@ -333,7 +334,7 @@
         <div class="row hrow" onclick="toggleCard(this)"><div class="logo gd">GD</div><div class="grow"><div class="nm">Google Drive</div><div class="meta">Not granted to any product yet</div></div><span class="pill p-pend">Unassigned</span><span class="chev">›</span></div>
         <div class="drawer hide">
           <div class="gtbl">
-            <div class="ghd"><span class="hp">Product</span><span>Segment</span></div>
+            <div class="ghd"><span class="hp">Product</span><span>Segment <span class="lz">· enforced by Lessly</span></span></div>
             <div class="gempty">No products yet — grant a folder to a product below.</div>
           </div>
           <div class="dfoot"><button class="btn sm" onclick="openGrant(this)">+ Grant to a product</button></div>
